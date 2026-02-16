@@ -1,0 +1,33 @@
+{
+    "name": "cafe-inventory-management",
+    "version": "1.0.0",
+    "description": "A platform to help SMB cafe owners digitize and streamline the management of their menus and inventories.",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js",
+        "seed": "node config/seed.js",
+        "lint": "eslint .",
+        "format": "prettier --write ."
+    },
+    "keywords": [
+        "cafe",
+        "inventory",
+        "menu",
+        "management",
+        "express",
+        "mongodb"
+    ],
+    "author": "Pangta Huang & Hsin-Yao Huang (Amy)",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "mongodb": "^6.12.0"
+    },
+    "devDependencies": {
+        "eslint": "^9.17.0",
+        "prettier": "^3.4.2"
+    }
+}
