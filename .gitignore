@@ -1,3 +1,9 @@
+# package-lock
+package-lock.json
+
+# MacOS
+.DS_Store
+
 # Logs
 logs
 *.log
