@@ -1,41 +1,56 @@
+import globals from "globals";
 import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier";
+import prettier from "eslint-plugin-prettier";
 
 export default [
-    js.configs.recommended,
-    {
-        languageOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module",
-            globals: {
-                console: "readonly",
-                process: "readonly",
-                URL: "readonly",
-                setTimeout: "readonly",
-                clearTimeout: "readonly",
-            },
+  {
+    files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"],
+
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
         },
-        rules: {
-            "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-            "no-console": "off",
-            "prefer-const": "error",
-            "no-var": "error",
-            eqeqeq: ["error", "always"],
-        },
+      },
+
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2025,
+      },
     },
-    {
-        files: ["public/js/**/*.js"],
-        languageOptions: {
-            sourceType: "module",
-            globals: {
-                document: "readonly",
-                window: "readonly",
-                fetch: "readonly",
-                alert: "readonly",
-                confirm: "readonly",
-                location: "readonly",
-                bootstrap: "readonly",
-            },
-        },
+    plugins: {
+      prettier: prettier,
     },
-    { ignores: ["node_modules/"] },
+
+    rules: {
+      // ESLint recommended rules
+      ...js.configs.recommended.rules,
+
+      indent: [
+        "error",
+        2,
+        {
+          SwitchCase: 1,
+        },
+      ],
+
+      "linebreak-style": ["error", "unix"],
+      quotes: ["error", "double"],
+      semi: ["error", "always"],
+      "no-console": 0,
+
+      // Prettier integration - this runs Prettier through ESLint
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "lf",
+        },
+      ],
+    },
+  },
+  eslintConfigPrettier,
 ];
