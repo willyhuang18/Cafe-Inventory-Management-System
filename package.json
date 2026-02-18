@@ -2,12 +2,12 @@
     "name": "cafe-inventory-management",
     "version": "1.0.0",
     "description": "A platform to help SMB cafe owners digitize and streamline the management of their menus and inventories.",
-    "main": "server.js",
+    "main": "src/server.js",
     "type": "module",
     "scripts": {
         "start": "node src/server.js",
         "dev": "nodemon src/server.js",
-        "seed": "node config/seed.js",
+        "seed": "node seed/seed.js",
         "lint": "eslint .",
         "format": "prettier --write ."
     },
