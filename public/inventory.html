@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brew.Base — Inventory</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/inventory.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <i class="bi bi-cup-hot-fill text-warning"></i>
+                <span class="fw-bold">Brew<span class="text-warning">.</span>Base</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/menu.html"><i
+                                class="bi bi-cup-straw me-1"></i>Live Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/menu-archive.html"><i
+                                class="bi bi-archive me-1"></i>Archive</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/inventory.html"><i
+                                class="bi bi-box-seam me-1"></i>Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/inventory-analytics.html"><i
+                                class="bi bi-bar-chart-line me-1"></i>Analytics</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid py-4 px-md-5">
+        <div class="row g-4">
+            <!-- Ingredients Sidebar -->
+            <div class="col-lg-3" id="ingredients-panel">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold mb-0"><i class="bi bi-list-ul me-2"></i>Ingredients</h5>
+                    <button class="btn btn-sm btn-primary" id="add-ingredient-btn" title="Add Ingredient">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+                <div class="mb-2">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="ingredient-search"
+                            placeholder="Search ingredients..." />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select form-select-sm" id="ingredient-stock-filter">
+                        <option value="All" selected>All Status</option>
+                        <option value="in-stock">In Stock</option>
+                        <option value="low-stock">Low Stock</option>
+                        <option value="out-of-stock">Out of Stock</option>
+                    </select>
+                </div>
+                <p class="text-muted small mb-2"><i class="bi bi-info-circle me-1"></i>Click to filter inventory, click again to clear.</p>
+                <div id="ingredients-list">
+                    <div class="text-center text-muted py-4">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>Loading...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Inventory Area -->
+            <div class="col-lg-9" id="inventory-main">
+                <div class="text-center text-muted py-5">
+                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>Loading inventory...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/scripts/inventory.js"></script>
+</body>
+
+</html>
