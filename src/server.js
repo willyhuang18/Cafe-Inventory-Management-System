@@ -8,10 +8,11 @@ import menuRoutes from "./routes/menu.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-console.log("Initializing the backend...");
+const app = express();
 
-const app = expresss();
-const PORT = process.env.PORT || 3000;
+// Middleware
+app.use(express.json());
+app.use(express.static("public"));
 
 /* Middleware */
 app.use(expresss.json());
