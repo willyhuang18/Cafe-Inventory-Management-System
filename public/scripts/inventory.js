@@ -6,10 +6,13 @@ let batches = [];
 let ingredients = [];
 let selectedIngredientId = null;
 let filterFreshness = "All";
+let filterStartDate = "";
+let filterEndDate = "";
 let searchText = "";
 let ingredientSearch = "";
 let ingredientStockFilter = "All";
 let currentPage = 1;
+let showAnalytics = false;
 const PAGE_SIZE = 10;
 
 /* ── Thresholds ── */
@@ -348,6 +351,18 @@ function filteredBatches() {
       return false;
     if (selectedIngredientId && b.ingredient_id !== selectedIngredientId)
       return false;
+    if (filterStartDate) {
+      const added = new Date(b.date_created);
+      added.setHours(0, 0, 0, 0);
+      if (added < new Date(filterStartDate)) return false;
+    }
+    if (filterEndDate) {
+      const added = new Date(b.date_created);
+      added.setHours(0, 0, 0, 0);
+      const end = new Date(filterEndDate);
+      end.setHours(23, 59, 59, 999);
+      if (added > end) return false;
+    }
     if (filterFreshness !== "All") {
       const freshness = getBatchFreshness(b);
       if (freshness !== filterFreshness) return false;
@@ -562,6 +577,13 @@ function renderInventory() {
   const pageStart = (currentPage - 1) * PAGE_SIZE;
   const list = allFiltered.slice(pageStart, pageStart + PAGE_SIZE);
 
+  // Summary stats from filtered batches
+  const totalSpent = allFiltered.reduce((s, b) => s + b.total_cost, 0);
+  const totalRestocks = allFiltered.length;
+  const totalQuantity = allFiltered.reduce((s, b) => s + b.initial_amount, 0);
+  const uniqueIngredients = new Set(allFiltered.map((b) => b.ingredient_id))
+    .size;
+
   const rows = list.length
     ? list
         .map((b) => {
@@ -601,11 +623,7 @@ function renderInventory() {
         .join("")
     : `<tr><td colspan="7" class="text-center text-muted py-5"><i class="bi bi-box-seam fs-1 d-block mb-2 opacity-25"></i>No inventory records found.</td></tr>`;
 
-  // Pad with empty rows to keep consistent table height
-  const emptyRowsNeeded = list.length > 0 ? PAGE_SIZE - list.length : 0;
-  const emptyRows = Array(emptyRowsNeeded)
-    .fill('<tr><td colspan="7">&nbsp;</td></tr>')
-    .join("");
+
 
   mainContainer.innerHTML = `
     <div class="mb-4">
@@ -620,8 +638,48 @@ function renderInventory() {
         <option value="expiring-soon" ${filterFreshness === "expiring-soon" ? "selected" : ""}>Expiring Soon</option>
         <option value="expired" ${filterFreshness === "expired" ? "selected" : ""}>Expired</option>
       </select>
+      <div class="input-group input-group-sm" style="max-width:180px">
+        <span class="input-group-text">From</span>
+        <input type="date" class="form-control" id="inv-filter-start" value="${esc(filterStartDate)}" />
+      </div>
+      <div class="input-group input-group-sm" style="max-width:180px">
+        <span class="input-group-text">To</span>
+        <input type="date" class="form-control" id="inv-filter-end" value="${esc(filterEndDate)}" />
+      </div>
+      <button class="btn btn-sm btn-outline-secondary" id="analyze-btn"><i class="bi bi-bar-chart-line me-1"></i>${showAnalytics ? "Hide Analytics" : "Analyze"}</button>
       <button class="btn btn-sm btn-primary ms-auto" id="add-batch-btn"><i class="bi bi-plus-lg me-1"></i>Add Inventory</button>
     </div>
+
+    ${
+      showAnalytics
+        ? `<div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="card"><div class="card-body d-flex align-items-center gap-3">
+          <div class="rounded-3 bg-primary-subtle text-primary d-flex align-items-center justify-content-center" style="width:44px;height:44px"><i class="bi bi-currency-dollar fs-5"></i></div>
+          <div><div class="stat-number text-primary">${totalSpent.toFixed(2)}</div><small class="text-muted">Total Spent</small></div>
+        </div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card"><div class="card-body d-flex align-items-center gap-3">
+          <div class="rounded-3 bg-success-subtle text-success d-flex align-items-center justify-content-center" style="width:44px;height:44px"><i class="bi bi-arrow-repeat fs-5"></i></div>
+          <div><div class="stat-number text-success">${totalRestocks}</div><small class="text-muted">Restocks</small></div>
+        </div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card"><div class="card-body d-flex align-items-center gap-3">
+          <div class="rounded-3 bg-warning-subtle text-warning d-flex align-items-center justify-content-center" style="width:44px;height:44px"><i class="bi bi-box fs-5"></i></div>
+          <div><div class="stat-number text-warning">${totalQuantity.toFixed(1)}</div><small class="text-muted">Total Qty</small></div>
+        </div></div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="card"><div class="card-body d-flex align-items-center gap-3">
+          <div class="rounded-3 bg-info-subtle text-info d-flex align-items-center justify-content-center" style="width:44px;height:44px"><i class="bi bi-list-ul fs-5"></i></div>
+          <div><div class="stat-number text-info">${uniqueIngredients}</div><small class="text-muted">Ingredients</small></div>
+        </div></div>
+      </div>
+    </div>`
+        : ""
+    }
 
     <div class="card">
       <div class="table-responsive">
@@ -637,7 +695,7 @@ function renderInventory() {
               <th style="width:130px">Actions</th>
             </tr>
           </thead>
-          <tbody>${rows}${emptyRows}</tbody>
+          <tbody>${rows}</tbody>
         </table>
       </div>
     </div>
@@ -651,6 +709,26 @@ function renderInventory() {
       currentPage = 1;
       renderInventory();
     });
+  mainContainer
+    .querySelector("#inv-filter-start")
+    .addEventListener("change", (e) => {
+      filterStartDate = e.target.value;
+      currentPage = 1;
+      renderInventory();
+    });
+  mainContainer
+    .querySelector("#inv-filter-end")
+    .addEventListener("change", (e) => {
+      filterEndDate = e.target.value;
+      currentPage = 1;
+      renderInventory();
+    });
+
+  // Bind analyze toggle
+  mainContainer.querySelector("#analyze-btn").addEventListener("click", () => {
+    showAnalytics = !showAnalytics;
+    renderInventory();
+  });
 
   // Bind add button
   mainContainer

@@ -13,6 +13,15 @@ body {
 }
 
 /* Ingredients sidebar */
+#ingredients-panel {
+  display: flex;
+  flex-direction: column;
+}
+#ingredients-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
 .ingredient-item {
   display: flex;
   justify-content: space-between;
@@ -62,14 +71,6 @@ body {
 
 .inventory-table {
   table-layout: fixed;
-}
-
-.inventory-table tbody {
-  min-height: 540px;
-}
-
-.inventory-table tbody tr {
-  height: 54px;
 }
 
 .progress {
