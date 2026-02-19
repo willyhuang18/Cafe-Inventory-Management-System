@@ -53,6 +53,7 @@ A full-stack web application that helps small and medium-sized cafe owners digit
 │   │   ├── menu.js                 # Menu frontend logic
 │   │   └── inventory.js            # Inventory frontend logic
 │   └── styles/
+│       ├── main.css                # Shared styles
 │       ├── menu.css                # Menu-specific styles
 │       └── inventory.css           # Inventory-specific styles
 ├── src/
