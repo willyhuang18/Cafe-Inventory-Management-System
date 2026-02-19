@@ -48,16 +48,13 @@ A full-stack web application that helps small and medium-sized cafe owners digit
 │   ├── index.html                  # Redirect to menu
 │   ├── menu.html                   # Live Menu page
 │   ├── menu-archive.html           # Menu Archive page
-│   ├── inventory.html              # Inventory Tracker page
-│   ├── inventory-analytics.html    # Analytics page
+│   ├── inventory.html              # Inventory page (ingredients + batches + analytics)
 │   ├── scripts/
 │   │   ├── menu.js                 # Menu frontend logic
-│   │   ├── inventory.js            # Inventory frontend logic
-│   │   └── analytics.js            # Analytics frontend logic
+│   │   └── inventory.js            # Inventory frontend logic
 │   └── styles/
-│       ├── menu.css
-│       ├── inventory.css
-│       └── analytics.css
+│       ├── menu.css                # Menu-specific styles
+│       └── inventory.css           # Inventory-specific styles
 ├── src/
 │   ├── config/index.js             # App configuration
 │   ├── db/connection.js            # MongoDB connection
