@@ -1,8 +1,0 @@
-{
-  "_id": "ObjectId",
-  "name": "Whole Milk",
-  "required_amount": 20,
-  "unit": "liters",
-  "date_created": "2025-02-17T...",
-  "date_modified": "2025-02-17T..."
-}
