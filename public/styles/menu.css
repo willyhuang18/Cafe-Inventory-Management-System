@@ -1,28 +1,28 @@
 body {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
 .navbar-brand span {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
 }
 
 .nav-link.btn-link {
-    text-decoration: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .nav-link.btn-link:hover,
 .nav-link.btn-link.active {
-    color: #fff;
+  color: #fff;
 }
 
 .stat-number {
-    font-size: 1.75rem;
-    font-weight: 700;
-    line-height: 1;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .badge.clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
