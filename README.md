@@ -22,16 +22,15 @@ A full-stack web application that helps small and medium-sized cafe owners digit
 
 ### Inventory Management (Hsin-Yao Huang / Amy)
 
-- **Inventory Tracker** — Track ingredients with batch-level granularity
-  - Ingredient sidebar with search and stock status filter
-  - Add, edit, and delete inventory batches
-  - Record usage to decrease stock quantities
-  - Automatic stock status tracking (in stock / low / out)
-- **Inventory Analytics** — Visualize spending and restock patterns
-  - Monthly bar chart with cost, quantity, or restock count metrics
-  - Filter by specific ingredient
-  - Summary cards for total spent, quantity, restocks, and average cost
-  - Recent restocks table with last 20 records
+- **Ingredient Management** — Manage ingredient items (CRUD)
+  - Search by ingredient name
+  - Filter by stock status
+  - Click ingredient to filter inventory list
+- **Inventory Tracker** — Manage inventory items for each ingredients (CRUD)
+  - Paginated list of inventory items sorted by creation date
+  - Track the freshness and quantity of each inventory item
+  - Filter by freshness and added date
+- **Inventory Analytics** — Summary cards (total spent, restocks, quantity, ingredients) for the current filtered inventory view
 
 ## Tech Stack
 
