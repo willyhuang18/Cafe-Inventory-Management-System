@@ -581,7 +581,8 @@ function renderInventory() {
   const totalSpent = allFiltered.reduce((s, b) => s + b.total_cost, 0);
   const totalRestocks = allFiltered.length;
   const totalQuantity = allFiltered.reduce((s, b) => s + b.initial_amount, 0);
-  const uniqueIngredients = new Set(allFiltered.map((b) => b.ingredient_id)).size;
+  const uniqueIngredients = new Set(allFiltered.map((b) => b.ingredient_id))
+    .size;
 
   const rows = list.length
     ? list
@@ -653,7 +654,9 @@ function renderInventory() {
       <button class="btn btn-sm btn-primary ms-auto" id="add-batch-btn"><i class="bi bi-plus-lg me-1"></i>Add Inventory</button>
     </div>
 
-    ${showAnalytics ? `<div class="row g-3 mb-4">
+    ${
+      showAnalytics
+        ? `<div class="row g-3 mb-4">
       <div class="col-6 col-md-3">
         <div class="card"><div class="card-body d-flex align-items-center gap-3">
           <div class="rounded-3 bg-primary-subtle text-primary d-flex align-items-center justify-content-center" style="width:44px;height:44px"><i class="bi bi-currency-dollar fs-5"></i></div>
@@ -678,7 +681,9 @@ function renderInventory() {
           <div><div class="stat-number text-info">${uniqueIngredients}</div><small class="text-muted">Ingredients</small></div>
         </div></div>
       </div>
-    </div>` : ""}
+    </div>`
+        : ""
+    }
 
     <div class="card">
       <div class="table-responsive">
@@ -724,12 +729,10 @@ function renderInventory() {
     });
 
   // Bind analyze toggle
-  mainContainer
-    .querySelector("#analyze-btn")
-    .addEventListener("click", () => {
-      showAnalytics = !showAnalytics;
-      renderInventory();
-    });
+  mainContainer.querySelector("#analyze-btn").addEventListener("click", () => {
+    showAnalytics = !showAnalytics;
+    renderInventory();
+  });
 
   // Bind add button
   mainContainer
