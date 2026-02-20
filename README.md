@@ -4,6 +4,17 @@ A full-stack web application that helps small and medium-sized cafe owners digit
 
 **Live Demo:** [https://cafe-inventory-management-system.onrender.com](https://cafe-inventory-management-system.onrender.com)
 
+<table>
+  <tr>
+    <td align="center"><strong>Home</strong><br><img src="images/thumnail.png" width="400"></td>
+    <td align="center"><strong>Live Menu</strong><br><img src="images/demo-menu.png" width="400"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Menu Archive</strong><br><img src="images/demo-archive.png" width="400"></td>
+    <td align="center"><strong>Inventory</strong><br><img src="images/demo-inventory.png" width="400"></td>
+  </tr>
+</table>
+
 ## Features
 
 ### Menu Management (Pangta Huang)
@@ -67,7 +78,7 @@ A full-stack web application that helps small and medium-sized cafe owners digit
 └── .env                            # Environment variables (not committed)
 ```
 
-## Getting Started
+## How To Build
 
 ### Prerequisites
 

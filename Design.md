@@ -4,6 +4,20 @@
 
 Brew.Base is a web-based inventory management platform for small and medium-sized cafes. It digitizes two workflows: menu management (with soft-delete archiving) and inventory tracking (with cost/restock analytics). Built with Node.js, Express, MongoDB, Bootstrap 5, and vanilla JavaScript client-side rendering.
 
+## Design Mockups
+
+### Home Page
+![Home Page Mockup](images/mockup-index.png)
+
+### Live Menu
+![Live Menu Mockup](images/mockup-menu.png)
+
+### Menu Archive
+![Menu Archive Mockup](images/mockup-menu-archive.png)
+
+### Inventory
+![Inventory Mockup](images/mockup-inventory.png)
+
 ## Database Schema
 
 ### `menuItems` Collection
