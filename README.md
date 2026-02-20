@@ -110,6 +110,10 @@ MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/cafe_inven
 PORT=3000
 ```
 
+### Seed Data (Optional)
+
+Sample data is provided in `seed/`. Import the JSON files into your MongoDB collections: `menuItems`, `ingredientItems`, and `inventoryItems`.
+
 ### Run Locally
 
 ```bash
