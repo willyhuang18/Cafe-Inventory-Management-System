@@ -1,0 +1,155 @@
+[
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2be9"
+    },
+    "name": "Espresso",
+    "price": 3.5,
+    "category": "Coffee",
+    "instructions": "Pull a double shot using 18g of finely ground espresso beans. Serve in a warm demitasse cup.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2025-01-15T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T22:57:33.988Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bea"
+    },
+    "name": "Cappuccino",
+    "price": 4.5,
+    "category": "Coffee",
+    "instructions": "Pull double espresso, steam 6oz whole milk to 150F with microfoam, pour with latte art.",
+    "is_active": false,
+    "in_stock": false,
+    "created_at": {
+      "$date": "2025-01-15T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T00:47:50.514Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2beb"
+    },
+    "name": "Matcha Latte",
+    "price": 5,
+    "category": "Tea",
+    "instructions": "Whisk 2g ceremonial matcha with 2oz hot water, add steamed oat milk.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2025-02-01T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2025-02-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bec"
+    },
+    "name": "Croissant",
+    "price": 3,
+    "category": "Pastry",
+    "instructions": "Warm in oven at 350F for 3 minutes. Serve on a plate with butter.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2025-01-20T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T22:57:34.674Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bed"
+    },
+    "name": "Watermelon Coffee",
+    "price": 6,
+    "category": "Seasonal",
+    "instructions": "Blend fresh watermelon juice with cold brew and ice. Garnish with mint.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2024-07-01T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T00:47:37.621Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bee"
+    },
+    "name": "Blueberry Muffin",
+    "price": 3.5,
+    "category": "Pastry",
+    "instructions": "Warm in oven for 2 minutes at 325F.",
+    "is_active": false,
+    "in_stock": false,
+    "created_at": {
+      "$date": "2025-01-20T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T00:47:46.557Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bef"
+    },
+    "name": "Chai Latte",
+    "price": 4.75,
+    "category": "Tea",
+    "instructions": "Brew chai concentrate, add steamed milk. Dust with cinnamon.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2025-02-05T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T22:57:35.590Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6992429528f001f5191d2bf0"
+    },
+    "name": "Mango Smoothie",
+    "price": 5.5,
+    "category": "Smoothie",
+    "instructions": "Blend frozen mango, banana, yogurt, and orange juice until smooth.",
+    "is_active": true,
+    "in_stock": true,
+    "created_at": {
+      "$date": "2025-02-10T00:00:00.000Z"
+    },
+    "updated_at": {
+      "$date": "2025-02-10T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "699643ab62a786f4e5cd42f5"
+    },
+    "name": "hihi",
+    "price": 4.5,
+    "category": "Pastry",
+    "instructions": "",
+    "is_active": true,
+    "in_stock": false,
+    "created_at": {
+      "$date": "2026-02-18T22:56:43.339Z"
+    },
+    "updated_at": {
+      "$date": "2026-02-18T22:57:38.163Z"
+    }
+  }
+]
